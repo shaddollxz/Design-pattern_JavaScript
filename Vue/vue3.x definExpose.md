@@ -9,11 +9,11 @@
 ```
 
 ```html
-<Chlid></Chlid>
+<Chlid ref="child"></Chlid>
 <script setup>
 	let child = ref(null)
     child.value.aaa //获取子组件的aaa
 </script>
 ```
 
-在父组件中直接修改子组件的属性，子组件也会相应更新
+在父组件中直接修改子组件的属性，子组件视图也会相应更新

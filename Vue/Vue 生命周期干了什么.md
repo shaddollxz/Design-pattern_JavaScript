@@ -18,7 +18,7 @@
 
 初始化了`inject methods data computed watch provide`
 
-vue2里似乎是这时候初始化`props`，我用的vue3
+vue2里似乎是这时候才初始化`props`，我用的vue3
 
 
 # created

@@ -71,13 +71,15 @@ Message.vue
             <div
                 @click="isShow = !isShow"
                 :class="isCanClose || duration ? 'canClose' : 'cantClose'"
-            ></div>
+            >
+                ✖
+            </div>
         </div>
     </transition>
 </template>
 
 <script>
-import { defineComponent, onBeforeUnmount, onMounted, ref } from "@vue/runtime-core";
+import { defineComponent, onMounted, ref } from "@vue/runtime-core";
 export default defineComponent({
     name: "message",
 });
@@ -106,7 +108,7 @@ const props = defineProps({
     // 样式 用来修改框的宽，高，背景色，文字颜色
     style: {
         type: Object,
-        default: {},
+        default: () => {},
     },
     // 弹框颜色快捷
     type: {
@@ -116,10 +118,9 @@ const props = defineProps({
     // 关闭时的触发回调
     onClose: {
         type: Function,
-        default: () => {},
+        default: () => () => {},
     },
 });
-const emit = defineEmits(["destory"]);
 
 // 定义时间之后消失
 const isShow = ref(true);
@@ -131,9 +132,6 @@ onMounted(() => {
         }, props.duration);
     }
 });
-
-// 卸载后触发事件
-onBeforeUnmount(() => console.log("use"));
 </script>
 
 <style lang="less">
@@ -146,6 +144,7 @@ onBeforeUnmount(() => console.log("use"));
     border-radius: 0.4rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     &.default {
         color: #909399;
@@ -160,6 +159,7 @@ onBeforeUnmount(() => console.log("use"));
         background-color: #fde2e2;
     }
     .text {
+        margin-right: 1rem;
         font-size: 1rem;
         font-weight: 600;
         flex: 1;
@@ -172,26 +172,7 @@ onBeforeUnmount(() => console.log("use"));
     }
     .canClose {
         // 叉叉
-        width: 1rem;
-        height: 1rem;
         cursor: pointer;
-        position: relative;
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            height: 1.2rem;
-            width: 3px;
-            top: 0;
-            right: 1rem;
-            background-color: #00000083 !important;
-        }
-        &::before {
-            transform: rotate(45deg);
-        }
-        &::after {
-            transform: rotate(-45deg);
-        }
     }
     .cantClose {
         display: none;

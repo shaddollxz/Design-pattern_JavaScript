@@ -36,7 +36,7 @@
 
 ## 配置webpack.config.js
 
-配置如下，关于webpack的详细配置可以间我以前的一篇博客
+配置如下，关于webpack的详细配置可以看我以前的博客
 
 ```javascript
 const path = require("path");
@@ -80,7 +80,7 @@ module.exports = {
         ],
     },
     plugins: [new VueLoaderPlugin()],
-    externals: /^(@{0,1})vue/i, // 导入时不要导入正则匹配的文件
+    externals: /^(@{0,1})vue/i, // 导入时不要导入正则匹配的库 简单来说就是不要将vue打包进去
 };
 ```
 
@@ -128,7 +128,7 @@ module.exports = {
 }
 ```
 
-然后`npm i``npm run build`文件就打包成功了
+然后`npm i npm run build`文件就打包成功了
 
 ### 发布
 

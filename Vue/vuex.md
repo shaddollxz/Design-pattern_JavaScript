@@ -13,6 +13,21 @@ vuex也是通过`vm.use()`来挂载的，使用`$store`来访问`state`。
 ```javascript
 let count = computed(() => store.state.count);
 ```
+# getters
+
+Vuex的计算属性，可以全局使用。
+
+`getter`可以接收第二个参数----`getters`，可以复用其它的计算属性。
+
+可以使用柯里化来给getter传入其它参数：
+
+```javascript
+getters:{
+    getter:(state,getters) => (selfValue) => {
+        ...
+    }
+}
+```
 
 # mutations
 
@@ -34,21 +49,6 @@ store.commit("add",2);
 
 **mutations只能是同步函数，异步函数放入actions中。**
 
-# getters
-
-Vuex的计算属性，可以全局使用。
-
-`getter`可以接收第二个参数----`getters`，可以复用其它的计算属性。
-
-可以使用柯里化来给getter传入其它参数：
-
-```javascript
-getters:{
-    getter:(state,getters) => (selfValue) => {
-        ...
-    }
-}
-```
 
 # actions
 
@@ -66,7 +66,7 @@ getters:{
 
 ## state
 
-读取模块中的状态通过`$store.state.user.name`，**模块在状态等基础属性后面**，该方法的调用只对`datae`有用。
+读取模块中的状态通过`$store.state.user.name`，**模块在状态等基础属性后面**。
 
 ## mutations
 

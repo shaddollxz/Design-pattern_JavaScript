@@ -325,7 +325,7 @@ const data = await User.find({ name: /\d/ }, null, { skip: 1 }); // 这里只会
 
 ### 通过`Model.findOne`方法
 
-该方法返回符合条件的第一条数据
+该方法返回符合条件的第一条数据，不传入参数返回表中的第一条数据，如果没有符合的数据会返回null
 
 ### 通过`Model.findById`方法
 
@@ -408,3 +408,17 @@ data.forEach((item) => {
 ### 通过`findOneAndUpdate findByIdAndUpdate`方法
 
 是上面的语法糖，获得修改后的数据
+
+### 对数组属性的修改
+
+通过第二个参数实现
+
+修改数组数据：
+
+```javascript
+const datas = await User.updateOne({ name: "1" }, { $push: { firends: "999" } }); // 给name为1的firends数组添加新数据“999”
+const datas = await User.updateOne({ name: "1" }, { $pull: { firends: "999" } }); // 将name为1的firends数组中的“999”删除
+```
+
+如果是嵌套在对象中的数组，字段用字符串来表示 ，如：`{$push: { "firend.jack"： "999"} }`
+
