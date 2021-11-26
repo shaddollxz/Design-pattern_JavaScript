@@ -285,6 +285,8 @@ let obj: Obj = {
 
 类似在给对象添加新键时用变量为键名，索引签名只支持`string number`两种类型
 
+> ts4.4后可以使用`symbol`和联合类型
+
 ```typescript
 interface StringArr {
     length: number;
@@ -311,7 +313,7 @@ interface Arr {
 const arr: Arr = ["a", "b"];
 ```
 
-### 继承
+### 接口继承
 
 接口也能继承，和类一样，通过`extends`关键字
 
@@ -644,7 +646,7 @@ console.log(test);
 - 只有`getter`没有`setter`时，ts会自动推断该属性为`readonly`
 - `getter 和 setter`可以使用`private`等修饰器，这时它们应该是相同的修饰符
 
-### 继承
+### 类继承
 
 ts的继承仍然和ES6的继承一样，使用`extends`关键字和`super()`函数
 
