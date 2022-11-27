@@ -54,6 +54,10 @@ sudo service mongod start
 sudo systemctl enable mongod
 ```
 
+> tips:
+>
+> 配置文件所在目录`/etc/mongod.conf`
+>
 > 在服务器重启后如果`mongo`无法打开，运行以下命令
 >
 > ```
